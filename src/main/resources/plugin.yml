@@ -1,0 +1,11 @@
+name: NeptuneTrial
+version: '${project.version}'
+main: es.outlook.adriansrj.neptunetrial.main.NeptuneTrial
+api-version: 1.17
+authors: [ AdrianSR ]
+description: Neptune Trial
+
+commands:
+  appraise:
+    description: Appraises the fish in hand.
+    usage: /appraise

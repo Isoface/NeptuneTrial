@@ -1,2 +1,1 @@
-# NeptuneTrial
-Custom fishing trial plugin
+# NeptuneTrial | Custom fishing trial plugin

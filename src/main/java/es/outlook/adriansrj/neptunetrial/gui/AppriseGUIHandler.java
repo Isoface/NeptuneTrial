@@ -222,25 +222,28 @@ public final class AppriseGUIHandler extends PluginHandler {
 	// of the player is full then the input fish will be dropped.
 	@EventHandler ( priority = EventPriority.HIGHEST, ignoreCancelled = true )
 	public void onClose ( InventoryCloseEvent event ) {
-		Inventory inventory      = event.getInventory ( );
-		ItemStack current_input  = inventory.getItem ( Constants.APPRAISE_GUI_INPUT_SLOT );
-		ItemStack current_result = inventory.getItem ( Constants.APPRAISE_GUI_RESULT_SLOT );
+		Inventory inventory = event.getInventory ( );
 		
-		if ( inventory.getHolder ( ) instanceof AppraiseGUIHolder
-				&& ( current_input != null && !current_input.getType ( ).isEmpty ( ) ||
-				current_result != null && !current_result.getType ( ).isEmpty ( ) ) ) {
-			HumanEntity     user             = event.getPlayer ( );
-			PlayerInventory player_inventory = user.getInventory ( );
-			ItemStack       save             = current_input != null ? current_input : current_result;
+		if ( inventory.getHolder ( ) instanceof AppraiseGUIHolder ) {
+			ItemStack current_input  = inventory.getItem ( Constants.APPRAISE_GUI_INPUT_SLOT );
+			ItemStack current_result = inventory.getItem ( Constants.APPRAISE_GUI_RESULT_SLOT );
 			
-			if ( player_inventory.firstEmpty ( ) != -1 ) {
-				player_inventory.addItem ( save );
+			if ( inventory.getHolder ( ) instanceof AppraiseGUIHolder
+					&& ( current_input != null && !current_input.getType ( ).isEmpty ( ) ||
+					current_result != null && !current_result.getType ( ).isEmpty ( ) ) ) {
+				HumanEntity     user             = event.getPlayer ( );
+				PlayerInventory player_inventory = user.getInventory ( );
+				ItemStack       save             = current_input != null ? current_input : current_result;
 				
-				if ( user instanceof Player ) {
-					( ( Player ) user ).updateInventory ( );
+				if ( player_inventory.firstEmpty ( ) != -1 ) {
+					player_inventory.addItem ( save );
+					
+					if ( user instanceof Player ) {
+						( ( Player ) user ).updateInventory ( );
+					}
+				} else {
+					event.getPlayer ( ).getWorld ( ).dropItem ( user.getLocation ( ) , save );
 				}
-			} else {
-				event.getPlayer ( ).getWorld ( ).dropItem ( user.getLocation ( ) , save );
 			}
 		}
 	}

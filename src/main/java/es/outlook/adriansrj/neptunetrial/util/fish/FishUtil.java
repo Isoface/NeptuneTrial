@@ -23,6 +23,19 @@ public class FishUtil {
 	
 	//	public static final double MAX_TO_INCREASE_PER_LEVEL = 4.2D;
 	
+	public static boolean isNeptuneFishItem ( ItemStack item ) {
+		ItemMeta meta = item.getItemMeta ( );
+		
+		if ( meta != null && EnumVanillaFish.of ( item.getType ( ) ) != null ) {
+			PersistentDataContainer data = meta.getPersistentDataContainer ( );
+			
+			return data.has ( Constants.WEIGHT_NAMESPACE , PersistentDataType.DOUBLE )
+					&& data.has ( Constants.QUALITY_NAMESPACE , PersistentDataType.DOUBLE );
+		} else {
+			return false;
+		}
+	}
+	
 	/**
 	 * Appraises the provided fish item.
 	 * <br>

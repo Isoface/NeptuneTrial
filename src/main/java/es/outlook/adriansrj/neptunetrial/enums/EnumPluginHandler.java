@@ -3,6 +3,7 @@ package es.outlook.adriansrj.neptunetrial.enums;
 import es.outlook.adriansrj.neptunetrial.command.appraise.AppraiseCommandHandler;
 import es.outlook.adriansrj.neptunetrial.configuration.MainConfigurationHandler;
 import es.outlook.adriansrj.neptunetrial.configuration.lang.LanguageConfigurationHandler;
+import es.outlook.adriansrj.neptunetrial.fish.NeptuneFishCookingHandler;
 import es.outlook.adriansrj.neptunetrial.fish.NeptuneFishEatingHandler;
 import es.outlook.adriansrj.neptunetrial.fish.NeptuneFishFishingHandler;
 import es.outlook.adriansrj.neptunetrial.fish.NeptuneFishHandler;
@@ -25,6 +26,7 @@ public enum EnumPluginHandler {
 	FISH_HANDLER ( NeptuneFishHandler.class ),
 	FISHING_HANDLER ( NeptuneFishFishingHandler.class ),
 	EATING_HANDLER ( NeptuneFishEatingHandler.class ),
+	COOKING_HANDLER ( NeptuneFishCookingHandler.class ) ,
 	APPRAISE_COMMAND_HANDLER ( AppraiseCommandHandler.class ),
 	APPRAISE_GUI_HANDLER ( AppriseGUIHandler.class ),
 	

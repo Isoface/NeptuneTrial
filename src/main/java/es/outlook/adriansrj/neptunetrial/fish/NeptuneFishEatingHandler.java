@@ -65,7 +65,15 @@ public final class NeptuneFishEatingHandler extends PluginHandler {
 					player.updateInventory ( );
 					
 					// restoring player food
-					player.setFoodLevel ( Math.min ( player.getFoodLevel ( ) + ( int ) Math.round ( weight / 2.0D ) , 20 ) );
+					if ( vanilla_fish.getCookedMaterial ( ) == item.getType ( ) ) {
+						// cooking a fish will result in the weight
+						// being triplicated, so it will restore more
+						// food levels.
+						player.setFoodLevel ( Math.min (
+								player.getFoodLevel ( ) + ( int ) Math.round ( ( weight * 3.0D ) / 2.0D ) , 20 ) );
+					} else {
+						player.setFoodLevel ( Math.min ( player.getFoodLevel ( ) + ( int ) Math.round ( weight / 2.0D ) , 20 ) );
+					}
 					
 					// restoring player saturation
 					float saturation_base = vanilla_fish.getRawSaturation ( );
